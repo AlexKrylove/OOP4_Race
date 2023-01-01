@@ -1,8 +1,9 @@
 package cars;
 
+import java.net.Proxy;
 import java.util.Objects;
 
-public class Transports implements Challenge {
+public abstract class Transports implements Challenge {
     protected String brand;
     protected String model;
     protected double engineVolume;
@@ -22,6 +23,37 @@ public class Transports implements Challenge {
         }
         this.engineVolume = engineVolume;
 
+    }
+
+    public static final String PIT_STOP = " делает остановку";
+    public static final String BEST_LAP_TIME = "Лучшее время круга ";
+    public static final String MAX_SPEED = "Максимальная скорость ";
+    public static final String[] ALL_CHALLENGERS = {PIT_STOP, BEST_LAP_TIME, MAX_SPEED};
+
+    public void time() {
+        System.out.println();
+    }
+
+
+    public abstract void printType();
+
+    public  abstract void service();
+
+
+    @Override
+
+    public void pitStop() {
+        System.out.println(getBrand() + " " + getModel() + PIT_STOP);
+    }
+
+    @Override
+    public void bestLapTime(double time) {
+        System.out.println(BEST_LAP_TIME + getBrand() + " " + getModel() + " составило " + time + " мин.");
+    }
+
+    @Override
+    public void maxSpeed(double speed) {
+        System.out.println(MAX_SPEED + getBrand() + " " + getModel() + " составила " + speed + " км/час");
     }
 
     public void getStart() {
@@ -78,31 +110,7 @@ public class Transports implements Challenge {
         return Objects.hash(brand, model, engineVolume);
     }
 
-    public static final String PIT_STOP = " делает остановку";
-    public static final String BEST_LAP_TIME = "Лучшее время круга ";
-    public static final String MAX_SPEED = "Максимальная скорость ";
-    public static final String[] ALL_CHALLENGERS = {PIT_STOP, BEST_LAP_TIME, MAX_SPEED};
 
-    public void time() {
-        System.out.println();
-    }
-
-    @Override
-    public void pitStop() {
-        System.out.println(getBrand() + " " + getModel() + PIT_STOP);
-    }
-
-    @Override
-    public void bestLapTime(double time) {
-        System.out.println(BEST_LAP_TIME + getBrand() + " " + getModel() + " составило " + time + " мин.");
-    }
-
-    @Override
-    public void maxSpeed(double speed) {
-        System.out.println(MAX_SPEED + getBrand() + " " + getModel() + " составила " + speed + " км/час");
-
-
-    }
 }
 
 

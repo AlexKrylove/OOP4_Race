@@ -3,7 +3,7 @@ package Drivers;
 import cars.Challenge;
 import cars.Transports;
 
-public class Drivers <A extends Transports & Challenge> {
+public class Drivers<A extends Transports & Challenge> {
     protected String name;
     protected String driveLicense;
     protected int seniority;
@@ -13,25 +13,24 @@ public class Drivers <A extends Transports & Challenge> {
             name = "Значение не указано";
         }
         this.name = name;
-        if (driveLicense == null || driveLicense.isEmpty()) {
-            driveLicense = "Значение не указано";
-        }
-        this.driveLicense = driveLicense;
+        setDriveLicense(driveLicense);
         if (seniority <= 0) {
             seniority = 1;
         }
         this.seniority = seniority;
     }
+
     public void getStart(A transport) {
-        System.out.println(getName() + " начинает движение на " + transport.getBrand()+ " "+ transport.getModel());
+        System.out.println(getName() + " начинает движение на " + transport.getBrand() + " " + transport.getModel());
     }
 
     public void getFinish(A transport) {
-        System.out.println(getName() + " заканчивает движение на "+ transport.getBrand()+ " "+ transport.getModel());
+        System.out.println(getName() + " заканчивает движение на " + transport.getBrand() + " " + transport.getModel());
 
     }
+
     public void getGasUp(A transport) {
-        System.out.println(getName() + " заправляет авто "+ transport.getBrand()+ " "+ transport.getModel());
+        System.out.println(getName() + " заправляет авто " + transport.getBrand() + " " + transport.getModel());
 
     }
 
@@ -40,6 +39,9 @@ public class Drivers <A extends Transports & Challenge> {
     }
 
     public void setDriveLicense(String driveLicense) {
+        if (driveLicense == null|| driveLicense.isEmpty()|| driveLicense.isBlank()) {
+            throw new IllegalArgumentException("Необходимо указать категорию прав: B,C или D");
+        }
         this.driveLicense = driveLicense;
     }
 
