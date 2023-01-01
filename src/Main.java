@@ -58,7 +58,7 @@ public class Main {
         mercedes.getFinish();
         PAZ.getFinish();
 
-        Drivers<Passenger_cars> shrudt = new Driver_B ("Дуайт Карл Шрудт", "B", 5);
+        Drivers<Passenger_cars> shrudt = new Driver_B("Дуайт Карл Шрудт", "B", 5);
         shrudt.getStart(audi);
         shrudt.getGasUp(audi);
         shrudt.getFinish(audi);
@@ -68,13 +68,14 @@ public class Main {
         figel.getGasUp(mercedes);
         figel.getFinish(mercedes);
 
-        Drivers<Buses> michalich = new Driver_D("Побединский Иван Михайлович", "В", 38);
+        Drivers<Buses> michalich = new Driver_D("Побединский Иван Михайлович", "D", 38);
         michalich.getStart(PAZ);
         michalich.getGasUp(PAZ);
         michalich.getFinish(PAZ);
 
-
-
+        audi.service();
+        mercedes.service();
+        PAZ.service();
 
 
     }

@@ -41,6 +41,13 @@ public class Passenger_cars extends Transports {
             System.out.println("Тип кузова " + getBrand() +" " + getModel() +":"+ typeOfBody.type);
         }
     }
+
+    @Override
+    public void service() {
+        System.out.println("Диагностика для " + getBrand() +" " + getModel() + " пройдена");
+
+    }
+
     public TypeOfBody getTypeOfBody() {
         return typeOfBody;
     }

@@ -57,4 +57,9 @@ public class Buses extends Transports {
             System.out.println("Вместимость " + getBrand() + " " + getModel() + ":  " + getPeopleCapacity().minSeats + " - " + getPeopleCapacity().maxSeats + " мест");
         }
     }
+
+    public void service() {
+        System.out.println("Автобусы не нуждаются в диагностике");
+    }
+
 }

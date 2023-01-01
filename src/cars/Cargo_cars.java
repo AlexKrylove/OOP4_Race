@@ -45,7 +45,7 @@ public class Cargo_cars extends Transports {
     @Override
     public void printType() {
         if (loadCapacity.minMass == null) {
-            System.out.println("Грузоподъемность" + getBrand()+ " " + getModel() + ": до " + getLoadCapacity().maxMass + " тонн");
+            System.out.println("Грузоподъемность" + getBrand() + " " + getModel() + ": до " + getLoadCapacity().maxMass + " тонн");
         }
         if (loadCapacity.maxMass == null) {
             System.out.println("Грузоподъемность " + getBrand() + " " + getModel() + ": от " + getLoadCapacity().minMass + " тонн");
@@ -76,4 +76,8 @@ public class Cargo_cars extends Transports {
                 ", объем двигателя: " + engineVolume + loadCapacity;
     }
 
+    public void service() {
+        System.out.println("Диагностика для " + getBrand() +" " + getModel() + " пройдена");
+
+    }
 }

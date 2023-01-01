@@ -8,9 +8,6 @@ public abstract class Transports implements Challenge {
     protected String model;
     protected double engineVolume;
 
-
-
-
     public Transports(String brand, String model, double engineVolume) {
         if (brand == null || brand.isEmpty()) {
             brand = "Значение не указано";
@@ -40,6 +37,9 @@ public abstract class Transports implements Challenge {
 
     public abstract void printType();
 
+    public  abstract void service();
+
+
     @Override
 
     public void pitStop() {
@@ -54,8 +54,6 @@ public abstract class Transports implements Challenge {
     @Override
     public void maxSpeed(double speed) {
         System.out.println(MAX_SPEED + getBrand() + " " + getModel() + " составила " + speed + " км/час");
-
-
     }
 
     public void getStart() {
