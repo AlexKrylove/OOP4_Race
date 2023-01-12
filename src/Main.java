@@ -2,18 +2,24 @@ import Drivers.Driver_C;
 import Drivers.Driver_B;
 import Drivers.Driver_D;
 import Drivers.Drivers;
+import Mechanics.Mechanics;
 import cars.Buses;
 import cars.Cargo_cars;
 import cars.Passenger_cars;
+import cars.Transports;
 
-import java.sql.Driver;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SortedMap;
 
 public class Main {
     public static void main(String[] args) {
-        Passenger_cars audi = new Passenger_cars("AUDI", "RS6", 3.0, null);
+        Passenger_cars audi = new Passenger_cars("AUDI", "RS6", 3.0, Passenger_cars.TypeOfBody.SEDAN);
         Passenger_cars BMW = new Passenger_cars("BMW", "M5", 3.2, Passenger_cars.TypeOfBody.WAGON);
         Passenger_cars Porsche = new Passenger_cars("Porsche", "911", 3.5, Passenger_cars.TypeOfBody.COUPE);
         Passenger_cars FORD = new Passenger_cars("FORD", "Mustang", 4.0, Passenger_cars.TypeOfBody.SUV);
+        Passenger_cars ssFORD = new Passenger_cars("FORD", "Mustang", 4.0, Passenger_cars.TypeOfBody.PICKUP);
         System.out.println(audi);
         System.out.println(BMW);
         audi.printType();
@@ -76,6 +82,43 @@ public class Main {
         audi.service();
         mercedes.service();
         PAZ.service();
+
+        List<Transports> raceTransport = new ArrayList<>();
+        raceTransport.add(audi);
+        raceTransport.add(mercedes);
+        raceTransport.add(BAF);
+        System.out.println("Участвуют в гонке: " + raceTransport);
+
+        Mechanics alex = new Mechanics<>("Alex Ivanov", "FixAll", Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL);
+        Mechanics<Passenger_cars> ivan = new Mechanics<Passenger_cars>("Ivan Petrov", "RepairCar", Mechanics.RepairSpecification.SPECIFICATION_CAR);
+        Mechanics<Cargo_cars> petr = new Mechanics<Cargo_cars>("Petr Nachimov", "ToolMax", Mechanics.RepairSpecification.SPECIFICATION_TRUCK);
+
+
+        List<Drivers> namesDrivers = new ArrayList<>();
+        namesDrivers.add(shrudt);
+        namesDrivers.add(figel);
+        namesDrivers.add(michalich);
+        System.out.println("Имена водителей: " + namesDrivers);
+
+        List<Mechanics> namesMechanics = new ArrayList<>();
+        namesMechanics.add(alex);
+        namesMechanics.add(ivan);
+        namesMechanics.add(petr);
+        System.out.println("Механики: " + namesMechanics);
+
+        alex.getTO(BAF);
+        ivan.getTO(audi);
+        petr.getTO(MAN);
+
+        alex.getFixCar(BMW);
+        ivan.getFixCar(audi);
+        petr.getFixCar(mercedes);
+
+        BMW.getInfo(alex);
+        audi.getInfo(ivan);
+        mercedes.getInfo(petr);
+
+
 
 
     }

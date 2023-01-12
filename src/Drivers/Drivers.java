@@ -29,6 +29,11 @@ public class Drivers<A extends Transports & Challenge> {
 
     }
 
+    @Override
+    public String toString() {
+        return name;
+    }
+
     public void getGasUp(A transport) {
         System.out.println(getName() + " заправляет авто " + transport.getBrand() + " " + transport.getModel());
 
@@ -39,11 +44,11 @@ public class Drivers<A extends Transports & Challenge> {
     }
 
     public void setDriveLicense(String driveLicense) {
-        if (driveLicense == null|| driveLicense.isEmpty()|| driveLicense.isBlank()) {
+        if (driveLicense == null || driveLicense.isEmpty() || driveLicense.isBlank()) {
             throw new IllegalArgumentException("Необходимо указать категорию прав: B,C или D");
         }
         this.driveLicense = driveLicense;
-    }
+    }// В ДОМАШКЕ ОТ 28 ДЕКАБРЯ РАЗБОР, НАДО ЧЕРЕЗ БУЛИН
 
     public int getSeniority() {
         return seniority;

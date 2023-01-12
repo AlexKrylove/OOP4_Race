@@ -1,12 +1,26 @@
 package cars;
 
+import Drivers.Drivers;
+import Mechanics.Mechanics;
+
 import java.net.Proxy;
+import java.util.List;
 import java.util.Objects;
 
-public abstract class Transports implements Challenge {
+public abstract class Transports<B extends Mechanics> implements Challenge {
     protected String brand;
     protected String model;
     protected double engineVolume;
+
+    List<Mechanics> mechanics;
+    List<Transports> transports;
+    List<Drivers> drivers;
+
+    public Transports(List<Transports> transports, List<Drivers> drivers, List<Mechanics> mechanics) {
+        this.transports = transports;
+        this.drivers = drivers;
+        this.mechanics = mechanics;
+    }
 
     public Transports(String brand, String model, double engineVolume) {
         if (brand == null || brand.isEmpty()) {
@@ -23,21 +37,18 @@ public abstract class Transports implements Challenge {
         }
         this.engineVolume = engineVolume;
 
+
     }
+
 
     public static final String PIT_STOP = " делает остановку";
     public static final String BEST_LAP_TIME = "Лучшее время круга ";
     public static final String MAX_SPEED = "Максимальная скорость ";
     public static final String[] ALL_CHALLENGERS = {PIT_STOP, BEST_LAP_TIME, MAX_SPEED};
 
-    public void time() {
-        System.out.println();
-    }
-
-
     public abstract void printType();
 
-    public  abstract void service();
+    public abstract void service();
 
 
     @Override
@@ -62,9 +73,11 @@ public abstract class Transports implements Challenge {
 
     public void getFinish() {
         System.out.println(getBrand() + " " + getModel() + " заканчивает движение");
-
     }
 
+    public void getInfo(B mechanic) {
+        System.out.println("Транспорт " + getBrand() + " " + getModel() + " обслуживается у механика " + mechanic.getName());
+    }
 
     public String getBrand() {
         return brand;
@@ -109,7 +122,6 @@ public abstract class Transports implements Challenge {
     public int hashCode() {
         return Objects.hash(brand, model, engineVolume);
     }
-
 
 }
 

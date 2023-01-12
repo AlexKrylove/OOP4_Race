@@ -1,5 +1,10 @@
 package cars;
 
+import Drivers.Drivers;
+import Mechanics.Mechanics;
+
+import java.util.List;
+
 public class Passenger_cars extends Transports {
 
     private  TypeOfBody typeOfBody;
@@ -8,7 +13,9 @@ public class Passenger_cars extends Transports {
         super(brand, model, engineVolume);
         this.typeOfBody=typeOfBody;
     }
-
+    public Passenger_cars(List<Transports> transports, List<Drivers> drivers, List<Mechanics> mechanics) {
+        super(transports,drivers,mechanics);
+           }
 
     public enum TypeOfBody {
         SEDAN("Седан"),
