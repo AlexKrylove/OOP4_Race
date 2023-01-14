@@ -4,12 +4,13 @@ import cars.Transports;
 
 import java.util.List;
 
-public class Mechanics<A extends Transports> {
+public class Mechanics {
 
     public enum RepairSpecification {
 
         SPECIFICATION_CAR("ЛЕГКОВОГО ТРАНСПОРТА"),
-        SPECIFICATION_TRUCK("ГРУЗОВОГО ТРАНСОРТА"),
+        SPECIFICATION_TRUCK("ГРУЗОВОГО ТРАНСПОРТА"),
+        SPECIFICATION_BUS("АВТОБУСОВ"),
         SPECIFICATION_UNIVERSAL("ВСЕХ ТИПОВ ТРАНСПОРТА");
 
         private final String specification;
@@ -30,12 +31,12 @@ public class Mechanics<A extends Transports> {
 
     protected String name;
     protected String companyName;
-    protected static RepairSpecification RepairSpecification;
+    protected RepairSpecification repairSpecification;
 
-    public Mechanics(String name, String companyName, RepairSpecification RepairSpecification) {
+    public Mechanics(String name, String companyName, RepairSpecification repairSpecification) {
         this.name = name;
         this.companyName = companyName;
-        this.RepairSpecification = RepairSpecification;
+        this.repairSpecification = repairSpecification;
     }
 
     public String getName() {
@@ -50,21 +51,13 @@ public class Mechanics<A extends Transports> {
         return companyName;
     }
 
-    public Mechanics.RepairSpecification getRepairSpecification() {
-        return RepairSpecification;
-    }
-
-    public void getTO(A transport) {
-        System.out.println(name + " проводит технический осмотр " + transport.getBrand() + " " + transport.getModel());
-    }
-
-    public void getFixCar(A transport) {
-        System.out.println(name + " чинит транспорт " + transport.getBrand() + " " + transport.getModel());
+    public RepairSpecification getRepairSpecification() {
+        return repairSpecification;
     }
 
     @Override
     public String toString() {
-        return getName() + " " + " из компании " + getCompanyName() + " занимается ремонтом " + getRepairSpecification();
+        return getName() + " " + " из компании " + getCompanyName() + " специализируется на ремонте" + getRepairSpecification();
     }
 
 }

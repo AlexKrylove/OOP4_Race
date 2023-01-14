@@ -4,18 +4,17 @@ import Drivers.Drivers;
 import Mechanics.Mechanics;
 
 import java.util.List;
+import java.util.SortedMap;
 
 public class Passenger_cars extends Transports {
 
-    private  TypeOfBody typeOfBody;
+    private TypeOfBody typeOfBody;
 
     public Passenger_cars(String brand, String model, double engineVolume, TypeOfBody typeOfBody) {
         super(brand, model, engineVolume);
-        this.typeOfBody=typeOfBody;
+        this.typeOfBody = typeOfBody;
     }
-    public Passenger_cars(List<Transports> transports, List<Drivers> drivers, List<Mechanics> mechanics) {
-        super(transports,drivers,mechanics);
-           }
+
 
     public enum TypeOfBody {
         SEDAN("Седан"),
@@ -44,14 +43,14 @@ public class Passenger_cars extends Transports {
     public void printType() {
         if (typeOfBody == null) {
             System.out.println("Данных по авто не достаточно");
-        }else {
-            System.out.println("Тип кузова " + getBrand() +" " + getModel() +":"+ typeOfBody.type);
+        } else {
+            System.out.println("Тип кузова " + getBrand() + " " + getModel() + ":" + typeOfBody.type);
         }
     }
 
     @Override
     public void service() {
-        System.out.println("Диагностика для " + getBrand() +" " + getModel() + " пройдена");
+        System.out.println("Диагностика для " + getBrand() + " " + getModel() + " пройдена");
 
     }
 
@@ -69,6 +68,46 @@ public class Passenger_cars extends Transports {
 
     public void getFinish() {
         super.getFinish();
+    }
+
+    @Override
+    public void getTechnicalService(List<Mechanics> namesMechanics) {
+        System.out.println("Механики :");
+        for (Mechanics value : namesMechanics) {
+            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_CAR || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
+                System.out.println("- " + value);
+            }
+        }
+        System.out.println("производят регулярное ТО на автомобиле " + getBrand() + " " + getModel());
+
+    }
+
+    @Override
+    public void getFixCar(List<Mechanics> namesMechanics) {
+        System.out.println("Механики :");
+        for (Mechanics value : namesMechanics) {
+            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_CAR || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
+                System.out.println("- " + value);
+            }
+        }
+        System.out.println("занимаются ремонтом транспорта " + getBrand() + " " + getModel());
+
+    }
+
+    @Override
+    public void getInfoAboutCar(List<Mechanics> namesMechanics, List<Drivers> drivers) {
+        System.out.println("Водитель автомобиля " + getBrand() + " " + getModel() + " - ");
+        for (Drivers value : drivers) {
+
+            System.out.println(value);
+        }
+        System.out.println("Механики автомобиля :" + getBrand() + " " + getModel());
+        for (Mechanics value : namesMechanics) {
+            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_CAR || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
+                System.out.println("- " + value);
+            }
+        }
+
     }
 
 }

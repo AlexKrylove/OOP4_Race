@@ -69,7 +69,7 @@ public class Main {
         shrudt.getGasUp(audi);
         shrudt.getFinish(audi);
 
-        Drivers<Cargo_cars> figel = new Driver_C("Готлиб Маркус Фигельбаум", "С", 9);
+        Drivers<Cargo_cars> figel = new Driver_C("Готлиб Маркус Фигельбаум", "C", 9);
         figel.getStart(mercedes);
         figel.getGasUp(mercedes);
         figel.getFinish(mercedes);
@@ -89,9 +89,10 @@ public class Main {
         raceTransport.add(BAF);
         System.out.println("Участвуют в гонке: " + raceTransport);
 
-        Mechanics alex = new Mechanics<>("Alex Ivanov", "FixAll", Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL);
-        Mechanics<Passenger_cars> ivan = new Mechanics<Passenger_cars>("Ivan Petrov", "RepairCar", Mechanics.RepairSpecification.SPECIFICATION_CAR);
-        Mechanics<Cargo_cars> petr = new Mechanics<Cargo_cars>("Petr Nachimov", "ToolMax", Mechanics.RepairSpecification.SPECIFICATION_TRUCK);
+        Mechanics alex = new Mechanics("Alex Ivanov", "FixAll", Mechanics.RepairSpecification.SPECIFICATION_CAR);
+        Mechanics ivan = new Mechanics("Ivan Petrov", "RepairCar", Mechanics.RepairSpecification.SPECIFICATION_BUS);
+        Mechanics petr = new Mechanics("Petr Nachimov", "ToolMax", Mechanics.RepairSpecification.SPECIFICATION_TRUCK);
+        Mechanics mark = new Mechanics("Mark Verona", "ToolMax", Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL);
 
 
         List<Drivers> namesDrivers = new ArrayList<>();
@@ -104,21 +105,17 @@ public class Main {
         namesMechanics.add(alex);
         namesMechanics.add(ivan);
         namesMechanics.add(petr);
+        namesMechanics.add(mark);
         System.out.println("Механики: " + namesMechanics);
 
-        alex.getTO(BAF);
-        ivan.getTO(audi);
-        petr.getTO(MAN);
 
-        alex.getFixCar(BMW);
-        ivan.getFixCar(audi);
-        petr.getFixCar(mercedes);
+        audi.getTechnicalService(namesMechanics);
+        BAF.getTechnicalService(namesMechanics);
 
-        BMW.getInfo(alex);
-        audi.getInfo(ivan);
-        mercedes.getInfo(petr);
+        audi.getFixCar(namesMechanics);
+        BAF.getFixCar(namesMechanics);
 
-
+        audi.getInfoAboutCar(namesMechanics,namesDrivers);
 
 
     }

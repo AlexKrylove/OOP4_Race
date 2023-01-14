@@ -1,5 +1,10 @@
 package cars;
 
+import Drivers.Drivers;
+import Mechanics.Mechanics;
+
+import java.util.List;
+
 public class Buses extends Transports {
     private PeopleCapacity peopleCapacity;
 
@@ -60,6 +65,40 @@ public class Buses extends Transports {
 
     public void service() {
         System.out.println("Автобусы не нуждаются в диагностике");
+    }
+    @Override
+    public void getTechnicalService(List<Mechanics> namesMechanics) {
+        System.out.println("Механики :");
+        for (Mechanics value : namesMechanics) {
+            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_BUS||value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
+                System.out.println("- " + value);
+            }
+        }
+        System.out.println("производят регулярное ТО на автомобиле " + getBrand() + " " + getModel());
+    }
+    public void getFixCar(List<Mechanics> namesMechanics) {
+        System.out.println("Механики :");
+        for (Mechanics value : namesMechanics) {
+            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_BUS || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
+                System.out.println("- " + value);
+            }
+        }
+        System.out.println("занимаются ремонтом транспорта " + getBrand() + " " + getModel());
+
+    }
+    @Override
+    public void getInfoAboutCar(List<Mechanics> namesMechanics,List<Drivers> drivers) {
+        System.out.println("Водитель автомобиля " + getBrand() + " " + getModel() + " - ");
+        for (Drivers value : drivers) {
+            System.out.println( value);
+        }
+        System.out.println("Механики автомобиля :" + getBrand() + " " + getModel());
+        for (Mechanics value : namesMechanics) {
+            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_CAR || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
+                System.out.println("- " + value);
+            }
+        }
+
     }
 
 }

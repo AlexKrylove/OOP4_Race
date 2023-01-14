@@ -7,20 +7,13 @@ import java.net.Proxy;
 import java.util.List;
 import java.util.Objects;
 
-public abstract class Transports<B extends Mechanics> implements Challenge {
+public abstract class Transports implements Challenge {
     protected String brand;
     protected String model;
     protected double engineVolume;
 
-    List<Mechanics> mechanics;
-    List<Transports> transports;
-    List<Drivers> drivers;
 
-    public Transports(List<Transports> transports, List<Drivers> drivers, List<Mechanics> mechanics) {
-        this.transports = transports;
-        this.drivers = drivers;
-        this.mechanics = mechanics;
-    }
+
 
     public Transports(String brand, String model, double engineVolume) {
         if (brand == null || brand.isEmpty()) {
@@ -49,6 +42,9 @@ public abstract class Transports<B extends Mechanics> implements Challenge {
     public abstract void printType();
 
     public abstract void service();
+    public abstract void getTechnicalService(List<Mechanics> mechanics);
+    public abstract void getFixCar(List<Mechanics> namesMechanics);
+    public  abstract void getInfoAboutCar(List<Mechanics> namesMechanics,List<Drivers> drivers);
 
 
     @Override
@@ -73,10 +69,6 @@ public abstract class Transports<B extends Mechanics> implements Challenge {
 
     public void getFinish() {
         System.out.println(getBrand() + " " + getModel() + " заканчивает движение");
-    }
-
-    public void getInfo(B mechanic) {
-        System.out.println("Транспорт " + getBrand() + " " + getModel() + " обслуживается у механика " + mechanic.getName());
     }
 
     public String getBrand() {
