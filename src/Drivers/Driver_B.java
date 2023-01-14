@@ -5,4 +5,5 @@ public class Driver_B extends Drivers {
         super(name, driveLicense, seniority);
     }
 
+
 }
