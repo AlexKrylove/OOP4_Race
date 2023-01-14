@@ -118,7 +118,7 @@ public class Main {
         Map<Transports, Mechanics> carAndMechanic = new HashMap();
         carAndMechanic.putIfAbsent(audi, alex);
         carAndMechanic.putIfAbsent(mercedes, ivan);
-        carAndMechanic.putIfAbsent(mercedes, ivan);
+        carAndMechanic.putIfAbsent(mercedes, mark);
 
         for (Map.Entry<Transports, Mechanics> i: carAndMechanic.entrySet()) {
             System.out.println("Автомобиль " + i.getKey() + " обслуживает " + i.getValue());
