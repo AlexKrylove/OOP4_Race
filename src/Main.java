@@ -9,9 +9,7 @@ import cars.Passenger_cars;
 import cars.Transports;
 
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.SortedMap;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -103,11 +101,11 @@ public class Main {
 
         List<Mechanics> namesMechanics = new ArrayList<>();
         namesMechanics.add(alex);
+        namesMechanics.add(alex);
         namesMechanics.add(ivan);
         namesMechanics.add(petr);
         namesMechanics.add(mark);
         System.out.println("Механики: " + namesMechanics);
-
 
         audi.getTechnicalService(namesMechanics);
         BAF.getTechnicalService(namesMechanics);
@@ -116,6 +114,17 @@ public class Main {
         BAF.getFixCar(namesMechanics);
 
         audi.getInfoAboutCar(namesMechanics,namesDrivers);
+
+        Map<Transports, Mechanics> carAndMechanic = new HashMap();
+        carAndMechanic.putIfAbsent(audi, alex);
+        carAndMechanic.putIfAbsent(mercedes, ivan);
+        carAndMechanic.putIfAbsent(mercedes, ivan);
+
+        for (Map.Entry<Transports, Mechanics> i: carAndMechanic.entrySet()) {
+            System.out.println("Автомобиль " + i.getKey() + " обслуживает " + i.getValue());
+        }
+
+
 
 
     }
