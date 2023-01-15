@@ -42,13 +42,6 @@ public abstract class Transports implements Challenge {
 
     public abstract void service();
 
-    public abstract void getTechnicalService(List<Mechanics> mechanics);
-
-    public abstract void getFixCar(List<Mechanics> namesMechanics);
-
-    public abstract void getInfoAboutCar(List<Mechanics> namesMechanics, List<Drivers> drivers);
-
-
     @Override
 
     public void pitStop() {

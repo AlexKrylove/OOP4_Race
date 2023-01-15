@@ -68,7 +68,7 @@ public class Buses extends Transports {
     public void service() {
         System.out.println("Автобусы не нуждаются в диагностике");
     }
-    @Override
+
     public void getTechnicalService(List<Mechanics> namesMechanics) {
         System.out.println("Механики :");
         for (Mechanics value : namesMechanics) {
@@ -88,7 +88,7 @@ public class Buses extends Transports {
         System.out.println("занимаются ремонтом транспорта " + getBrand() + " " + getModel());
 
     }
-    @Override
+
     public void getInfoAboutCar(List<Mechanics> namesMechanics, List<Drivers> drivers) {
         System.out.print("Водитель автомобиля " + getBrand() + " " + getModel() + ": ");
         for (Drivers value : drivers) {

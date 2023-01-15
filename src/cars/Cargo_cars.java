@@ -87,7 +87,7 @@ public class Cargo_cars extends Transports {
         System.out.println("Диагностика для " + getBrand() +" " + getModel() + " пройдена");
 
     }
-    @Override
+
     public void getTechnicalService(List<Mechanics> mechanics) {
         System.out.println("Механики :");
         for (Mechanics value : mechanics) {
@@ -108,7 +108,7 @@ public class Cargo_cars extends Transports {
         System.out.println("занимаются ремонтом транспорта " + getBrand() + " " + getModel());
 
     }
-    @Override
+
     public void getInfoAboutCar(List<Mechanics> namesMechanics, List<Drivers> drivers) {
         System.out.print("Водитель автомобиля " + getBrand() + " " + getModel() + ": ");
         for (Drivers value : drivers) {
