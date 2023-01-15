@@ -1,9 +1,8 @@
 package cars;
 
-import Drivers.Drivers;
+import drivers.Drivers;
 import Mechanics.Mechanics;
 
-import java.net.Proxy;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,11 +10,11 @@ public abstract class Transports implements Challenge {
     protected String brand;
     protected String model;
     protected double engineVolume;
+    List<Transports> raceTransport;
+    List<Mechanics> mechanics;
+    List<Drivers> namesDrivers;
 
-
-
-
-    public Transports(String brand, String model, double engineVolume) {
+        public Transports(String brand, String model, double engineVolume) {
         if (brand == null || brand.isEmpty()) {
             brand = "Значение не указано";
         }
@@ -42,9 +41,12 @@ public abstract class Transports implements Challenge {
     public abstract void printType();
 
     public abstract void service();
+
     public abstract void getTechnicalService(List<Mechanics> mechanics);
+
     public abstract void getFixCar(List<Mechanics> namesMechanics);
-    public  abstract void getInfoAboutCar(List<Mechanics> namesMechanics,List<Drivers> drivers);
+
+    public abstract void getInfoAboutCar(List<Mechanics> namesMechanics, List<Drivers> drivers);
 
 
     @Override
@@ -87,6 +89,7 @@ public abstract class Transports implements Challenge {
         this.model = model;
     }
 
+
     public double getEngineVolume() {
         return engineVolume;
     }
@@ -94,6 +97,16 @@ public abstract class Transports implements Challenge {
     public void setEngineVolume(double engineVolume) {
         this.engineVolume = engineVolume;
     }
+    public List<Transports> getRaceTransport() {
+        return raceTransport;
+    }
+    public List<Mechanics> getMechanics() {
+        return mechanics;
+    }
+    public List<Drivers> getNamesDrivers() {
+        return namesDrivers;
+    }
+
 
     @Override
     public String toString() {

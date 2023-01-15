@@ -1,7 +1,7 @@
-import Drivers.Driver_C;
-import Drivers.Driver_B;
-import Drivers.Driver_D;
-import Drivers.Drivers;
+import drivers.Driver_C;
+import drivers.Driver_B;
+import drivers.Driver_D;
+import drivers.Drivers;
 import Mechanics.Mechanics;
 import cars.Buses;
 import cars.Cargo_cars;
@@ -101,7 +101,6 @@ public class Main {
 
         List<Mechanics> namesMechanics = new ArrayList<>();
         namesMechanics.add(alex);
-        namesMechanics.add(alex);
         namesMechanics.add(ivan);
         namesMechanics.add(petr);
         namesMechanics.add(mark);
@@ -113,18 +112,18 @@ public class Main {
         audi.getFixCar(namesMechanics);
         BAF.getFixCar(namesMechanics);
 
-        audi.getInfoAboutCar(namesMechanics,namesDrivers);
+        audi.getInfoAboutCar(namesMechanics, namesDrivers);
+        MAN.getInfoAboutCar(namesMechanics, namesDrivers);
+        PAZ.getInfoAboutCar(namesMechanics, namesDrivers);
 
-        Map<Transports, Mechanics> carAndMechanic = new HashMap();
-        carAndMechanic.putIfAbsent(audi, alex);
-        carAndMechanic.putIfAbsent(mercedes, ivan);
-        carAndMechanic.putIfAbsent(mercedes, mark);
-
-        for (Map.Entry<Transports, Mechanics> i: carAndMechanic.entrySet()) {
-            System.out.println("Автомобиль " + i.getKey() + " обслуживает " + i.getValue());
-        }
-
-
+//        Map<Transports, Mechanics> carAndMechanic = new HashMap();
+//        carAndMechanic.putIfAbsent(audi, alex);
+//        carAndMechanic.putIfAbsent(mercedes, ivan);
+//        carAndMechanic.putIfAbsent(mercedes, mark);
+//
+//        for (Map.Entry<Transports, Mechanics> i: carAndMechanic.entrySet()) {
+//            System.out.println("Автомобиль " + i.getKey() + " обслуживает " + i.getValue());
+//        }
 
 
     }

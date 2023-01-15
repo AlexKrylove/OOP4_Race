@@ -1,6 +1,8 @@
 package cars;
 
-import Drivers.Drivers;
+import drivers.Driver_C;
+import drivers.Driver_D;
+import drivers.Drivers;
 import Mechanics.Mechanics;
 
 import java.util.List;
@@ -87,18 +89,19 @@ public class Buses extends Transports {
 
     }
     @Override
-    public void getInfoAboutCar(List<Mechanics> namesMechanics,List<Drivers> drivers) {
-        System.out.println("Водитель автомобиля " + getBrand() + " " + getModel() + " - ");
+    public void getInfoAboutCar(List<Mechanics> namesMechanics, List<Drivers> drivers) {
+        System.out.print("Водитель автомобиля " + getBrand() + " " + getModel() + ": ");
         for (Drivers value : drivers) {
-            System.out.println( value);
+            if (value instanceof Driver_D) {
+                System.out.println(value);
+            }
         }
-        System.out.println("Механики автомобиля :" + getBrand() + " " + getModel());
+        System.out.println("Механики автомобиля " + getBrand() + " " + getModel() + ": ");
         for (Mechanics value : namesMechanics) {
-            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_CAR || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
+            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_BUS || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
                 System.out.println("- " + value);
             }
         }
-
     }
 
 }

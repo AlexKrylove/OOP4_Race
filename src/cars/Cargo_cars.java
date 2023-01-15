@@ -1,6 +1,8 @@
 package cars;
 
-import Drivers.Drivers;
+import drivers.Driver_B;
+import drivers.Driver_C;
+import drivers.Drivers;
 import Mechanics.Mechanics;
 
 import java.util.List;
@@ -107,17 +109,18 @@ public class Cargo_cars extends Transports {
 
     }
     @Override
-    public void getInfoAboutCar(List<Mechanics> namesMechanics,List<Drivers> Drivers) {
-        System.out.println("Водитель автомобиля " + getBrand() + " " + getModel() + " - ");
-        for (Drivers value : Drivers) {
-            System.out.println( value);
+    public void getInfoAboutCar(List<Mechanics> namesMechanics, List<Drivers> drivers) {
+        System.out.print("Водитель автомобиля " + getBrand() + " " + getModel() + ": ");
+        for (Drivers value : drivers) {
+            if (value instanceof Driver_C) {
+                System.out.println(value);
+            }
         }
-        System.out.println("Механики автомобиля :" + getBrand() + " " + getModel());
+        System.out.println("Механики автомобиля " + getBrand() + " " + getModel() + ": ");
         for (Mechanics value : namesMechanics) {
-            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_CAR || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
+            if (value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_TRUCK || value.getRepairSpecification() == Mechanics.RepairSpecification.SPECIFICATION_UNIVERSAL) {
                 System.out.println("- " + value);
             }
         }
-
     }
 }

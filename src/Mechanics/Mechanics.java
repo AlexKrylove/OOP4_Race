@@ -3,8 +3,22 @@ package Mechanics;
 import cars.Transports;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Mechanics {
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanics mechanics = (Mechanics) o;
+        return Objects.equals(name, mechanics.name) && Objects.equals(companyName, mechanics.companyName) && repairSpecification == mechanics.repairSpecification;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, companyName, repairSpecification);
+    }
 
     public enum RepairSpecification {
 
@@ -57,7 +71,7 @@ public class Mechanics {
 
     @Override
     public String toString() {
-        return getName() + " " + " из компании " + getCompanyName() + " специализируется на ремонте" + getRepairSpecification();
+        return getName() + " " + "из компании " + getCompanyName() + " специализируется на ремонте" + getRepairSpecification();
     }
 
 }
