@@ -3,9 +3,14 @@ package drivers;
 import cars.Challenge;
 import cars.Transports;
 
+import java.util.Objects;
+
 public class Drivers<A extends Transports & Challenge> {
     protected String name;
     protected String driveLicense;
+
+
+
     protected int seniority;
 
     public Drivers(String name, String driveLicense, int seniority) {
@@ -65,5 +70,18 @@ public class Drivers<A extends Transports & Challenge> {
     public void setName(String name) {
         this.name = name;
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Drivers<?> drivers = (Drivers<?>) o;
+        return seniority == drivers.seniority && Objects.equals(name, drivers.name) && Objects.equals(driveLicense, drivers.driveLicense);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, driveLicense, seniority);
+    }
+
 
 }

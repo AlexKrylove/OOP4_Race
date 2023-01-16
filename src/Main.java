@@ -116,15 +116,31 @@ public class Main {
         MAN.getInfoAboutCar(namesMechanics, namesDrivers);
         PAZ.getInfoAboutCar(namesMechanics, namesDrivers);
 
-//        Map<Transports, Mechanics> carAndMechanic = new HashMap();
-//        carAndMechanic.putIfAbsent(audi, alex);
-//        carAndMechanic.putIfAbsent(mercedes, ivan);
-//        carAndMechanic.putIfAbsent(mercedes, mark);
-//
-//        for (Map.Entry<Transports, Mechanics> i: carAndMechanic.entrySet()) {
-//            System.out.println("Автомобиль " + i.getKey() + " обслуживает " + i.getValue());
-//        }
+        Map<Transports, Mechanics> carAndMechanic = new HashMap();
+        carAndMechanic.putIfAbsent(audi, alex);
+        carAndMechanic.putIfAbsent(mercedes, ivan);
+        carAndMechanic.putIfAbsent(mercedes, mark);
 
+        for (Map.Entry<Transports, Mechanics> i : carAndMechanic.entrySet()) {
+            System.out.println("Автомобиль " + i.getKey() + " обслуживает " + i.getValue());
+        }
+
+        Set<Drivers> drivers = new HashSet<>();
+        drivers.add(shrudt);
+        drivers.add(shrudt);
+        drivers.add(shrudt);
+        drivers.add(figel);
+        drivers.add(figel);
+        drivers.add(figel);
+        drivers.add(michalich);
+        drivers.add(michalich);
+        drivers.add(michalich);
+
+        Iterator<Drivers> iterator = drivers.iterator();
+        while (iterator.hasNext()) {
+            Drivers driversAll = iterator.next();
+            System.out.println("Водитель - " + driversAll +" c лицензией: "+ driversAll.getDriveLicense()+ ", имеет стаж вождения " + driversAll.getSeniority() + " полных лет.");
+        }
 
     }
 }
